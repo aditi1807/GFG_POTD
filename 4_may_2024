@@ -1,0 +1,36 @@
+class GfG
+{
+    int pst=0;
+    Node solve(int[] in, int[] post,int st,int end)
+    {
+     if(st>end)
+     return null;
+     int value=post[pst];
+     Node newnode=new Node(value);
+     pst--;
+     if(st==end)
+     return newnode;
+     int mid=0;
+     
+     int i=0;
+     for(i=st;i<=end;i++)
+     {
+         if(in[i]==value)
+         {
+             mid=i;
+             break;
+         }
+     }
+     if(i>end)
+     return null;
+     newnode.right=solve(in,post,mid+1,end);
+     newnode.left=solve(in,post,st,mid-1);
+     return newnode;
+    }
+    //Function to return a tree created from postorder and inoreder traversals.
+    Node buildTree(int in[], int post[], int n) {
+        // Your code here
+        pst=n-1;
+        return solve(in,post,0,n-1);
+    }
+}
