@@ -1,3 +1,18 @@
+
+
+/* 
+class Node
+{
+    int data;
+    Node left, right;
+
+    Node(int item)
+    {
+        data = item;
+        left = right = null;
+    }
+}
+*/
 class Solution{
     Map<Integer,Integer>hash=new HashMap<>();
     public void solve(Node root, int curr)
