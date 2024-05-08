@@ -1,0 +1,42 @@
+/*
+
+Definition for Binary Tree Node
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+
+    Node(int data)
+    {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+*/
+
+class Solution {
+    public static void solve(Node root, ArrayList<Integer>curr,ArrayList<ArrayList<Integer>>ans)
+    {
+        curr.add(root.data);
+        if(root.left==null && root.right==null)
+        {
+            ans.add(new ArrayList<>(curr));
+            curr.remove(curr.size()-1);
+            return;
+        }
+        if(root.left!=null)
+        solve(root.left,curr,ans);
+        if(root.right!=null)
+        solve(root.right,curr,ans);
+        curr.remove(curr.size()-1);
+    }
+    public static ArrayList<ArrayList<Integer>> Paths(Node root) {
+        // code here
+        ArrayList<Integer>curr=new ArrayList<>();
+        ArrayList<ArrayList<Integer>>ans=new ArrayList<>();
+        solve(root,curr,ans);
+        return ans;
+    }
+}
